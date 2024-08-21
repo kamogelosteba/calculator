@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Calculator</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+        #main {
+            background-color: #ababab;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(49, 38, 38, 0.1);
+            width: 320px;
+        }
+        #display {
+            width: 100%;
+            padding: 10px;
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: right;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="button"] {
+            width: 20%;
+            margin: 1%;
+            padding: 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        input[type="button"]:hover {
+            background-color: #ddd;
+        }
+        input[type="button"]:active {
+            background-color: #ccc;
+        }
+        input[type="button"]:nth-child(4n) {
+            background-color: #f9a825; 
+            color: #fff;
+        }
+        input[type="button"]:nth-child(4n):hover {
+            background-color: #f57f17;
+        }
+        input[type="button"]:nth-child(4n):active {
+            background-color: #ef6c00;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main">
+        <form name="f">
+            <input type="text" id="display" name="ddd"> <br>
+            <input type="button" value="AC" onclick="document.getElementById('display').value='0'">
+            <input type="button" value="+/-" onclick="document.getElementById('display').value*=-1">
+            <input type="button" value="%" onclick="document.getElementById('display').value/=100">
+            <input type="button" value="/" onclick="add('/')"> <br>
+             
+            <input type="button" value="7" onclick="document.getElementById('display').value+=7">
+            <input type="button" value="8" onclick="document.getElementById('display').value+=8">
+            <input type="button" value="9" onclick="document.getElementById('display').value+=9">
+            <input type="button" value="x" onclick="add('*')"> <br>
+            
+            <input type="button" value="4" onclick="document.getElementById('display').value+=4">
+            <input type="button" value="5" onclick="document.getElementById('display').value+=5">
+            <input type="button" value="6" onclick="document.getElementById('display').value+=6">
+            <input type="button" value="-" onclick="add('-')"> <br>
+
+            <input type="button" value="1" onclick="document.getElementById('display').value+=1">
+            <input type="button" value="2" onclick="document.getElementById('display').value+=2">
+            <input type="button" value="3" onclick="document.getElementById('display').value+=3">
+            <input type="button" value="+" onclick="add('+')"> <br>
+
+            <input type="button" value="," onclick="document.getElementById('display').value+=','">
+            <input type="button" value="0" onclick="document.getElementById('display').value+='0'">
+            <input type="button" value="=" onclick="document.getElementById('display').value=eval(document.getElementById('display').value)" style="width: 140px;"> <br>
+
+    
+        </form>
+    
+    </div>
+    <script>
+        function add(operator){
+            var act = document.getElementById('display').value;
+            var lastChar = act.charAt(act.length - 1);
+    
+            if (lastChar == '+' || lastChar == '-' || lastChar == '/' || lastChar == '*') {
+                document.getElementById('display').value = act.substring(0, act.length - 1) + operator;
+            } else {
+                document.getElementById('display').value += operator;
+            }
+        }
+    </script>
+    
+</body>
+</html>
